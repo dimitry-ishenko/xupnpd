@@ -90,22 +90,6 @@ playlist=
 --    { './private', 'Private Media Files', '127.0.0.1;192.168.1.1' }  -- only for 127.0.0.1 and 192.168.1.1
 }
 
--- feeds list (plugin, feed name, feed type)
-feeds=
-{
---    { 'vimeo',          'channel/hd',           'Vimeo HD Channel' },
---    { 'vimeo',          'channel/hdxs',         'Vimeo Xtreme sports' },
---    { 'vimeo',          'channel/mtb',          'Vimeo MTB Channel' },
---    { 'youtube',        'channel/top_rated',    'YouTube Top Rated' },
---    { 'youtube',        'Drift0r',              'Drift0r' },
---    { 'youtube',        'XboxAhoy',             'XboxAhoy' },
---    { 'ag',             'videos',               'AG - New' },
---    { 'ivi',            'new',                  'IVI - New' },
---    { 'gametrailers',   'ps3',                   'GT - PS3' },
---    { 'giantbomb',      'all',                  'GiantBomb - All' },
---    { 'dreambox',       'http://192.168.0.1:8001/','Dreambox1' },
-}
-
 -- log ident, pid file end www root
 cfg.version='1.034'
 cfg.log_ident=arg[1] or 'xupnpd'
@@ -115,11 +99,8 @@ cfg.tmp_path='/tmp/'
 cfg.plugin_path='./plugins/'
 cfg.config_path='./config/'
 cfg.playlists_path='./playlists/'
---cfg.feeds_path='/tmp/xupnpd-feeds/'
 cfg.ui_path='./ui/'
 cfg.drive=''                    -- reload playlists only if drive state=active/idle, example: cfg.drive='/dev/sda'
 cfg.profiles='./profiles/'      -- device profiles feature
-cfg.recent_path='./recent/'   -- client history feature
-cfg.recent_count=5
 
 dofile('xupnpd_main.lua')
