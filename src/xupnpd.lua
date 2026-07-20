@@ -55,7 +55,7 @@ cfg.dlna_notify=true
 cfg.dlna_subscribe_ttl=1800
 
 -- group by 'group-title'
-cfg.group=true
+cfg.group=false
 
 -- sort files
 cfg.sort_files=false
