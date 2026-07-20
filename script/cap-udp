@@ -1,0 +1,24 @@
+#!/bin/bash
+
+card="DeckLink 4K Extreme"
+code=Hi59 # Hi59=59.94i / Hi60=60i / Hp59=59.94p / Hp60=60p
+
+rate=12M
+maxrate=15M
+bufsize=24M
+
+port="${1:-5001}"
+
+while :; do
+    ffmpeg -hide_banner \
+        -f decklink -format_code "$code" -draw_bars false -channels 2 -i "$card" \
+        -pix_fmt yuv420p -vf setfield=tff \
+        -codec:v h264_nvenc -profile:v high -level:v 4.1 \
+        -g 60 -forced-idr 1 -strict_gop 1 -rc-lookahead 0 -bf 2 -flags +ilme+ildct \
+        -b:v $rate -maxrate $maxrate -bufsize $bufsize \
+        -codec:a aac -b:a 320k -ar 48000 \
+        -f mpegts -mpegts_flags +resend_headers -muxdelay 0.1 -pat_period 0.1 \
+        "udp://239.1.1.1:${port}?pkt_size=1316"
+
+    sleep 1
+done
