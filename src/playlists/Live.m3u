@@ -1,0 +1,3 @@
+#EXTM3U
+#EXTINF:0 type=ts dlna_extras=mpeg_ts_hd,Live Feed
+udp://@239.1.1.1:5001
